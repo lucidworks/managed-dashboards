@@ -60,7 +60,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by(uri)(rate(http_server_requests_seconds_count{kubernetes_namespace=~\"$namespace\",app_kubernetes_io_component=\"query-pipeline\",uri=\"/query-pipelines/{id}\"}[1m]))",
+          "expr": "sum by(uri)(rate(gateway_requests_seconds_count{kubernetes_namespace=~\"$namespace\",app_kubernetes_io_component=\"query-pipeline\",uri=\"/query-pipelines/{id}\"}[1m]))",
           "intervalFactor": 1,
           "legendFormat": "RPS",
           "refId": "A"
