@@ -159,7 +159,7 @@
       "pluginVersion": "7.1.1",
       "targets": [
         {
-          "expr": "sum(increase(http_server_requests_seconds_count{kubernetes_namespace=~\"$namespace\",app_kubernetes_io_component=\"query-pipeline\",uri=~\"/query/{id}\"}[$myinterval]))",
+          "expr": "sum(increase(pipeline_execution_duration_secs_count{kubernetes_namespace=~"$namespace",pipelineId=~"$queryPipelineId"}[$myinterval]))",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
