@@ -1105,8 +1105,8 @@
       "1d"
     ]
   },
-  "timezone": "America/Los_Angeles",
-  "title": "Report Dashboard V2",
-  "uid": "reportv2",
+  "timezone": "",
+  "title": "Report Dashboard",
+  "uid": "report",
   "version": 4
 }
