@@ -578,7 +578,7 @@
       "timeFrom": null,
       "timeRegions": [],
       "timeShift": null,
-      "title": "Pipeline RPS",
+      "title": "Query Pipeline RPS By Pipeline",
       "tooltip": {
         "shared": true,
         "sort": 0,
