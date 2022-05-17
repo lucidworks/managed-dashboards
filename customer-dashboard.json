@@ -78,14 +78,14 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(gateway_requests_seconds_count{kubernetes_namespace=~\"$namespace\",routeId=\"apps_qp\",app_kubernetes_io_component=\"api-gateway\"}[1m]))",
+          "expr": "sum(rate(gateway_requests_seconds_count{namespace=~\"$namespace\",routeId=\"apps_qp\",app_kubernetes_io_component=\"api-gateway\"}[1m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Query Route RPS",
           "refId": "A"
         },
         {
-          "expr": "sum(rate(gateway_requests_seconds_count{kubernetes_namespace=~\"$namespace\",app_kubernetes_io_component=\"api-gateway\"}[1m]))",
+          "expr": "sum(rate(gateway_requests_seconds_count{namespace=~\"$namespace\",app_kubernetes_io_component=\"api-gateway\"}[1m]))",
           "interval": "",
           "legendFormat": "Global RPS",
           "refId": "B"
@@ -177,7 +177,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(gateway_requests_seconds_count{kubernetes_namespace=~\"$namespace\",outcome=\"SERVER_ERROR\",routeId=\"apps_qp\"}[1m]))",
+          "expr": "sum(rate(gateway_requests_seconds_count{namespace=~\"$namespace\",outcome=\"SERVER_ERROR\",routeId=\"apps_qp\"}[1m]))",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -185,7 +185,7 @@
           "refId": "A"
         },
         {
-          "expr": "sum(rate(gateway_requests_seconds_count{kubernetes_namespace=~\"$namespace\",outcome=\"SERVER_ERROR\",routeId=~\"(indexing|indexing_apps)\"}[1m]))",
+          "expr": "sum(rate(gateway_requests_seconds_count{namespace=~\"$namespace\",outcome=\"SERVER_ERROR\",routeId=~\"(indexing|indexing_apps)\"}[1m]))",
           "interval": "",
           "legendFormat": "Indexing Error Rate",
           "refId": "B"
@@ -277,7 +277,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(http_server_requests_seconds_count{kubernetes_namespace=~\"$namespace\",app_kubernetes_io_component=\"query-pipeline\",uri=\"/query/{id}\"}[1m]))",
+          "expr": "sum(rate(http_server_requests_seconds_count{namespace=~\"$namespace\",app_kubernetes_io_component=\"query-pipeline\",uri=\"/query/{id}\"}[1m]))",
           "interval": "",
           "legendFormat": "Query Pipeline Requests Per Second",
           "refId": "A"
@@ -369,7 +369,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(http_server_requests_seconds_count{kubernetes_namespace=~\"$namespace\",app_kubernetes_io_component=\"fusion-indexing\",uri=~\"/api/v1/index-pipelines/(.*)\",method=\"POST\"}[1m]))",
+          "expr": "sum(rate(http_server_requests_seconds_count{namespace=~\"$namespace\",app_kubernetes_io_component=\"fusion-indexing\",uri=~\"/api/v1/index-pipelines/(.*)\",method=\"POST\"}[1m]))",
           "interval": "",
           "legendFormat": "Indexing Requests Per Second",
           "refId": "A"
@@ -476,7 +476,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by (outcome)(rate(http_server_requests_seconds_count{kubernetes_namespace=~\"$namespace\",app_kubernetes_io_component=\"query-pipeline\",uri=~\"/query/{id}\"}[1m]))",
+          "expr": "sum by (outcome)(rate(http_server_requests_seconds_count{namespace=~\"$namespace\",app_kubernetes_io_component=\"query-pipeline\",uri=~\"/query/{id}\"}[1m]))",
           "interval": "",
           "legendFormat": "{{outcome}}",
           "refId": "A"
@@ -568,7 +568,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by(pipelineId)(rate(pipeline_execution_duration_secs_count{kubernetes_namespace=~\"$namespace\",pipelineId=~\"$queryPipelineId\"}[1m]))",
+          "expr": "sum by(pipelineId)(rate(pipeline_execution_duration_secs_count{namespace=~\"$namespace\",pipelineId=~\"$queryPipelineId\",pipelineId!~\"_lw_tmp_.*\"}[1m]))",
           "interval": "",
           "legendFormat": "{{pipelineId}}",
           "refId": "A"
@@ -661,7 +661,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.95, sum by(pipelineId, le)(rate(pipeline_execution_duration_secs_bucket{kubernetes_namespace=~\"$namespace\",pipelineId=~\"$queryPipelineId\"}[1m])))",
+          "expr": "histogram_quantile(0.95, sum by(pipelineId, le)(rate(pipeline_execution_duration_secs_bucket{namespace=~\"$namespace\",pipelineId=~\"$queryPipelineId\",pipelineId!~\"_lw_tmp_.*\"}[1m])))",
           "interval": "",
           "legendFormat": "{{pipelineId}}",
           "refId": "A"
@@ -754,7 +754,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.99, sum by(pipelineId, le)(rate(pipeline_execution_duration_secs_bucket{kubernetes_namespace=~\"$namespace\",pipelineId=~\"$queryPipelineId\"}[1m])))",
+          "expr": "histogram_quantile(0.99, sum by(pipelineId, le)(rate(pipeline_execution_duration_secs_bucket{namespace=~\"$namespace\",pipelineId=~\"$queryPipelineId\",pipelineId!~\"_lw_tmp_.*\"}[1m])))",
           "interval": "",
           "legendFormat": "{{pipelineId}}",
           "refId": "A"
@@ -847,7 +847,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.5, sum by(pipelineId, le)(rate(pipeline_execution_duration_secs_bucket{kubernetes_namespace=~\"$namespace\",pipelineId=~\"$queryPipelineId\"}[1m])))",
+          "expr": "histogram_quantile(0.5, sum by(pipelineId, le)(rate(pipeline_execution_duration_secs_bucket{namespace=~\"$namespace\",pipelineId=~\"$queryPipelineId\",pipelineId!~\"_lw_tmp_.*\"}[1m])))",
           "interval": "",
           "legendFormat": "{{pipelineId}}",
           "refId": "A"
@@ -940,7 +940,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "histogram_quantile(0.75, sum by(pipelineId, le)(rate(pipeline_execution_duration_secs_bucket{kubernetes_namespace=~\"$namespace\",pipelineId=~\"$queryPipelineId\"}[1m])))",
+          "expr": "histogram_quantile(0.75, sum by(pipelineId, le)(rate(pipeline_execution_duration_secs_bucket{namespace=~\"$namespace\",pipelineId=~\"$queryPipelineId\",pipelineId!~\"_lw_tmp_.*\"}[1m])))",
           "interval": "",
           "legendFormat": "{{pipelineId}}",
           "refId": "A"
@@ -1136,7 +1136,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "sum by(pipelineId)(rate(indexing_docs_in_total{kubernetes_namespace=~\"$namespace\",app_kubernetes_io_component=\"fusion-indexing\",pipelineId=~\"$indexPipelineId\"}[1m]))\n",
+              "expr": "sum by(pipelineId)(rate(indexing_docs_in_total{namespace=~\"$namespace\",app_kubernetes_io_component=\"fusion-indexing\",pipelineId=~\"$indexPipelineId\",pipelineId!~\"_lw_tmp_.*\"}[1m]))\n",
               "interval": "",
               "legendFormat": "{{pipelineId}}",
               "refId": "A"
@@ -1228,7 +1228,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "histogram_quantile(0.99, sum by(pipelineId, le)(rate(indexing_pipeline_exec_time_secs_bucket{kubernetes_namespace=~\"$namespace\",pipelineId=~\"$indexPipelineId\"}[1m])))",
+              "expr": "histogram_quantile(0.99, sum by(pipelineId, le)(rate(indexing_pipeline_exec_time_secs_bucket{namespace=~\"$namespace\",pipelineId=~\"$indexPipelineId\",pipelineId!~\"_lw_tmp_.*\"}[1m])))",
               "interval": "",
               "legendFormat": "{{pipelineId}}",
               "refId": "A"
@@ -1320,7 +1320,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "histogram_quantile(0.95, sum by(pipelineId, le)(rate(indexing_pipeline_exec_time_secs_bucket{kubernetes_namespace=~\"$namespace\",pipelineId=~\"$indexPipelineId\"}[1m])))",
+              "expr": "histogram_quantile(0.95, sum by(pipelineId, le)(rate(indexing_pipeline_exec_time_secs_bucket{namespace=~\"$namespace\",pipelineId=~\"$indexPipelineId\",pipelineId!~\"_lw_tmp_.*\"}[1m])))",
               "interval": "",
               "legendFormat": "{{pipelineId}}",
               "refId": "A"
@@ -1412,7 +1412,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "histogram_quantile(0.75, sum by(pipelineId, le)(rate(indexing_pipeline_exec_time_secs_bucket{kubernetes_namespace=~\"$namespace\",pipelineId=~\"$indexPipelineId\"}[1m])))",
+              "expr": "histogram_quantile(0.75, sum by(pipelineId, le)(rate(indexing_pipeline_exec_time_secs_bucket{namespace=~\"$namespace\",pipelineId=~\"$indexPipelineId\",pipelineId!~\"_lw_tmp_.*\"}[1m])))",
               "interval": "",
               "legendFormat": "{{pipelineId}}",
               "refId": "A"
@@ -1504,7 +1504,7 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "histogram_quantile(0.5, sum by(pipelineId, le)(rate(indexing_pipeline_exec_time_secs_bucket{kubernetes_namespace=~\"$namespace\",pipelineId=~\"$indexPipelineId\"}[1m])))",
+              "expr": "histogram_quantile(0.5, sum by(pipelineId, le)(rate(indexing_pipeline_exec_time_secs_bucket{namespace=~\"$namespace\",pipelineId=~\"$indexPipelineId\",pipelineId!~\"_lw_tmp_.*\"}[1m])))",
               "interval": "",
               "legendFormat": "{{pipelineId}}",
               "refId": "A"
@@ -1570,14 +1570,14 @@
           "value": "$__all"
         },
         "datasource": "Prometheus",
-        "definition": "label_values(http_server_requests_seconds_count{kubernetes_namespace=~\".+\"},kubernetes_namespace)",
+        "definition": "label_values(http_server_requests_seconds_count{namespace=~\".+\"},namespace)",
         "hide": 0,
         "includeAll": true,
         "label": "Fusion Installation",
         "multi": false,
         "name": "namespace",
         "options": [],
-        "query": "label_values(http_server_requests_seconds_count{kubernetes_namespace=~\".+\"},kubernetes_namespace)",
+        "query": "label_values(http_server_requests_seconds_count{namespace=~\".+\"},namespace)",
         "refresh": 2,
         "regex": "/(.+)/",
         "skipUrlSync": false,
@@ -1599,14 +1599,14 @@
           ]
         },
         "datasource": "Prometheus",
-        "definition": "label_values(query_stage_outcome_total{kubernetes_namespace=~\"$namespace\",pipelineId=~\".+\"},pipelineId)",
+        "definition": "label_values(query_stage_outcome_total{namespace=~\"$namespace\",pipelineId=~\".+\",pipelineId!~\"_lw_tmp_.*\"},pipelineId)",
         "hide": 0,
         "includeAll": true,
         "label": "Query Pipeline",
         "multi": true,
         "name": "queryPipelineId",
         "options": [],
-        "query": "label_values(query_stage_outcome_total{kubernetes_namespace=~\"$namespace\",pipelineId=~\".+\"},pipelineId)",
+        "query": "label_values(query_stage_outcome_total{namespace=~\"$namespace\",pipelineId=~\".+\",pipelineId!~\"_lw_tmp_.*\"},pipelineId)",
         "refresh": 2,
         "regex": "^(?!_)(?!cloud-platform)(.+)$",
         "skipUrlSync": false,
@@ -1625,14 +1625,14 @@
           "value": "$__all"
         },
         "datasource": "Prometheus",
-        "definition": "label_values(indexing_docs_in_total{kubernetes_namespace=~\"$namespace\"},pipelineId)",
+        "definition": "label_values(indexing_docs_in_total{namespace=~\"$namespace\"},pipelineId)",
         "hide": 0,
         "includeAll": true,
         "label": "Indexing Pipeline",
         "multi": true,
         "name": "indexPipelineId",
         "options": [],
-        "query": "label_values(indexing_docs_in_total{kubernetes_namespace=~\"$namespace\"},pipelineId)",
+        "query": "label_values(indexing_docs_in_total{namespace=~\"$namespace\"},pipelineId)",
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
