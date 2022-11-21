@@ -78,14 +78,14 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(gateway_requests_seconds_count{namespace=~\"$namespace\",routeId=\"apps_qp\",app_kubernetes_io_component=\"api-gateway\"}[1m]))",
+          "expr": "sum(rate(spring_cloud_gateway_requests_seconds_count{namespace=~\"$namespace\",routeId=\"apps_qp\",app_kubernetes_io_component=\"api-gateway\"}[1m]))",
           "hide": false,
           "interval": "",
           "legendFormat": "Query Route RPS",
           "refId": "A"
         },
         {
-          "expr": "sum(rate(gateway_requests_seconds_count{namespace=~\"$namespace\",app_kubernetes_io_component=\"api-gateway\"}[1m]))",
+          "expr": "sum(rate(spring_cloud_gateway_requests_seconds_count{namespace=~\"$namespace\",app_kubernetes_io_component=\"api-gateway\"}[1m]))",
           "interval": "",
           "legendFormat": "Global RPS",
           "refId": "B"
@@ -177,7 +177,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(gateway_requests_seconds_count{namespace=~\"$namespace\",outcome=\"SERVER_ERROR\",routeId=\"apps_qp\"}[1m]))",
+          "expr": "sum(rate(spring_cloud_gateway_requests_seconds_count{namespace=~\"$namespace\",outcome=\"SERVER_ERROR\",routeId=\"apps_qp\"}[1m]))",
           "hide": false,
           "instant": false,
           "interval": "",
@@ -185,7 +185,7 @@
           "refId": "A"
         },
         {
-          "expr": "sum(rate(gateway_requests_seconds_count{namespace=~\"$namespace\",outcome=\"SERVER_ERROR\",routeId=~\"(indexing|indexing_apps)\"}[1m]))",
+          "expr": "sum(rate(spring_cloud_gateway_requests_seconds_count{namespace=~\"$namespace\",outcome=\"SERVER_ERROR\",routeId=~\"(indexing|indexing_apps)\"}[1m]))",
           "interval": "",
           "legendFormat": "Indexing Error Rate",
           "refId": "B"
