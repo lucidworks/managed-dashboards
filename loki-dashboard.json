@@ -1,0 +1,82 @@
+{
+    "title": "Loki-stack dashboard",
+    "panels": [
+        {
+            "id": 1,
+            "type": "graph",
+            "title": "Loki RPS",
+            "datasource": "Prometheus",
+            "targets": [
+                {
+                    "expr": "rate(loki_request_duration_seconds_count[1m])"
+                }
+            ],
+            "legend": {
+                "show": true
+            },
+            "yaxes": [
+                {
+                    "format": "short"
+                },
+                {
+                    "format": "short"
+                }
+            ],
+            "gridPos": {
+                "x": 0,
+                "y": 0,
+                "w": 12,
+                "h": 6
+            }
+        },
+        {
+            "id": 2,
+            "type": "graph",
+            "title": "Loki Disk Utilization (In GB) ",
+            "datasource": "Prometheus",
+            "targets": [
+                {
+                    "expr": "kubelet_volume_stats_used_bytes{persistentvolumeclaim=~\".*loki.*\"} / 1024 / 1024 / 1024"
+                }
+            ],
+            "legend": {
+                "show": true
+            },
+            "yaxes": [
+                {
+                    "format": "short"
+                },
+                {
+                    "format": "short"
+                }
+            ],
+            "gridPos": {
+                "x": 0,
+                "y": 6,
+                "w": 12,
+                "h": 6
+            }
+        }
+    ],
+    "editable": true,
+    "hideControls": false,
+    "sharedCrosshair": false,
+    "time": {
+        "from": "now-6h",
+        "to": "now"
+    },
+    "timepicker": {
+        "refresh_intervals": [
+            "5s",
+            "10s",
+            "30s",
+            "1m",
+            "5m",
+            "15m",
+            "30m",
+            "1h",
+            "2h",
+            "1d"
+        ]
+    }
+}
