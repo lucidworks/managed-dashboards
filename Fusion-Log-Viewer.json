@@ -1,47 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_LOKI-STACK",
-      "label": "Loki-stack",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "loki",
-      "pluginName": "Loki"
-    }
-  ],
-  "__elements": {},
-  "__requires": [
-    {
-      "type": "panel",
-      "id": "bargauge",
-      "name": "Bar gauge",
-      "version": ""
-    },
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "9.0.5"
-    },
-    {
-      "type": "panel",
-      "id": "logs",
-      "name": "Logs",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "loki",
-      "name": "Loki",
-      "version": "1.0.0"
-    },
-    {
-      "type": "panel",
-      "id": "timeseries",
-      "name": "Time series",
-      "version": ""
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -67,7 +24,7 @@
   "editable": false,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": null,
+  "id": 5,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -87,7 +44,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "${DS_LOKI-STACK}"
+        "uid": "P53CB050F266694C5"
       },
       "description": "",
       "fieldConfig": {
@@ -164,7 +121,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "${DS_LOKI-STACK}"
+            "uid": "P53CB050F266694C5"
           },
           "editorMode": "code",
           "expr": "sum by (namespace) (count_over_time({namespace=~\"$namespace\", component=~\"$component\", pod=~\"$host\", log_level=\"INFO\"} [$__interval]))",
@@ -179,7 +136,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "${DS_LOKI-STACK}"
+        "uid": "P53CB050F266694C5"
       },
       "description": "",
       "fieldConfig": {
@@ -257,7 +214,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "${DS_LOKI-STACK}"
+            "uid": "P53CB050F266694C5"
           },
           "editorMode": "code",
           "expr": "sum by (namespace) (count_over_time({namespace=~\"$namespace\", component=~\"$component\", pod=~\"$host\", log_level=\"WARN\"} [$__interval]))",
@@ -272,7 +229,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "${DS_LOKI-STACK}"
+        "uid": "P53CB050F266694C5"
       },
       "description": "",
       "fieldConfig": {
@@ -350,7 +307,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "${DS_LOKI-STACK}"
+            "uid": "P53CB050F266694C5"
           },
           "editorMode": "code",
           "expr": "sum by (namespace) (count_over_time({namespace=~\"$namespace\", component=~\"$component\", pod=~\"$host\", log_level=\"ERROR\"} [$__interval]))",
@@ -365,7 +322,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "${DS_LOKI-STACK}"
+        "uid": "P53CB050F266694C5"
       },
       "description": "",
       "fieldConfig": {
@@ -443,7 +400,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "${DS_LOKI-STACK}"
+            "uid": "P53CB050F266694C5"
           },
           "editorMode": "code",
           "expr": "sum by (namespace) (count_over_time({namespace=~\"$namespace\", component=~\"$component\", pod=~\"$host\", log_level=\"DEBUG\"} [$__interval]))",
@@ -471,7 +428,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "${DS_LOKI-STACK}"
+        "uid": "P53CB050F266694C5"
       },
       "description": "",
       "fieldConfig": {
@@ -550,7 +507,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "${DS_LOKI-STACK}"
+            "uid": "P53CB050F266694C5"
           },
           "editorMode": "code",
           "expr": "sum by (namespace,app) (count_over_time({namespace=~\"$namespace\", component=~\"$component\", pod=~\"$host\", log_level=~\"(?i)$logLevel\"} [$__interval]))",
@@ -579,7 +536,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "${DS_LOKI-STACK}"
+        "uid": "P53CB050F266694C5"
       },
       "gridPos": {
         "h": 12,
@@ -602,10 +559,10 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "${DS_LOKI-STACK}"
+            "uid": "P53CB050F266694C5"
           },
           "editorMode": "code",
-          "expr": "{pod=~\"$host\",component=~\"$component\",namespace=\"$namespace\",log_level=~\"(?i)$logLevel\"} | logfmt | __error__=`` |~ `(?i)$search`",
+          "expr": "{pod=~\"$host\",component=~\"$component\",namespace=\"$namespace\",log_level=~\"(?i)$logLevel\"} |~ `(?i)$search`",
           "legendFormat": "",
           "queryType": "range",
           "refId": "A"
@@ -630,7 +587,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "${DS_LOKI-STACK}"
+        "uid": "P53CB050F266694C5"
       },
       "fieldConfig": {
         "defaults": {
@@ -684,7 +641,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "${DS_LOKI-STACK}"
+            "uid": "P53CB050F266694C5"
           },
           "editorMode": "code",
           "expr": "sum by(component) (count_over_time({pod=~\"$host\",component=~\"$component\",namespace=~\"$namespace\",log_level=~\"(?i)$logLevel\"} [$__interval]))",
@@ -699,7 +656,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "${DS_LOKI-STACK}"
+        "uid": "P53CB050F266694C5"
       },
       "fieldConfig": {
         "defaults": {
@@ -751,7 +708,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "${DS_LOKI-STACK}"
+            "uid": "P53CB050F266694C5"
           },
           "editorMode": "code",
           "expr": "sum by(pod) (count_over_time({pod=~\"$host\",component=~\"$component\",namespace=~\"$namespace\",log_level=~\"(?i)$logLevel\"} [$__interval]))",
@@ -771,10 +728,18 @@
   "templating": {
     "list": [
       {
-        "current": {},
+        "current": {
+          "selected": true,
+          "text": [
+            "dev"
+          ],
+          "value": [
+            "dev"
+          ]
+        },
         "datasource": {
           "type": "loki",
-          "uid": "${DS_LOKI-STACK}"
+          "uid": "P53CB050F266694C5"
         },
         "definition": "label_values({namespace=~\".+\", namespace!=\"default\"},namespace)",
         "hide": 0,
@@ -791,10 +756,18 @@
         "type": "query"
       },
       {
-        "current": {},
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
         "datasource": {
           "type": "loki",
-          "uid": "${DS_LOKI-STACK}"
+          "uid": "P53CB050F266694C5"
         },
         "definition": "label_values({component=~\".+\",namespace=~\"$namespace\"},component)",
         "hide": 0,
@@ -811,10 +784,14 @@
         "type": "query"
       },
       {
-        "current": {},
+        "current": {
+          "selected": false,
+          "text": "All",
+          "value": "$__all"
+        },
         "datasource": {
           "type": "loki",
-          "uid": "${DS_LOKI-STACK}"
+          "uid": "P53CB050F266694C5"
         },
         "definition": "label_values({pod=~\".+\",component=~\"$component\",namespace=~\"$namespace\"},pod)",
         "hide": 0,
@@ -831,10 +808,18 @@
         "type": "query"
       },
       {
-        "current": {},
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
         "datasource": {
           "type": "loki",
-          "uid": "${DS_LOKI-STACK}"
+          "uid": "P53CB050F266694C5"
         },
         "definition": "label_values({log_level=~\".+\"},log_level)",
         "hide": 0,
@@ -879,7 +864,7 @@
   "timepicker": {},
   "timezone": "",
   "title": "Fusion Log Viewer",
-  "uid": "FLV1x",
-  "version": 7,
+  "uid": "FLV100",
+  "version": 1,
   "weekStart": ""
 }
