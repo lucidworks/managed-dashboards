@@ -1608,9 +1608,9 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "histogram_quantile(0.99, sum by(stageType, pipelineId, le) (rate(query_stage_time_secs_bucket{namespace=~\"$namespace\", pod=~\"$pod\", pipelineId=~\"$queryPipelineId\", pipelineId!~\"_lw_tmp_.*\", stageType=~\"$stage\"}[1m])))",
+              "expr": "histogram_quantile(0.99, sum by(stageId, pipelineId, le) (rate(query_stage_time_secs_bucket{namespace=~\"$namespace\", pod=~\"$pod\", pipelineId=~\"$queryPipelineId\", pipelineId!~\"_lw_tmp_.*\", stageId=~\"$stageId\"}[1m])))",
               "intervalFactor": 2,
-              "legendFormat": "{{pipelineId}} {{stageType}}",
+              "legendFormat": "{{pipelineId}} {{stageId}}",
               "refId": "A"
             }
           ],
@@ -2141,14 +2141,14 @@
             ]
           },
           "datasource": "Prometheus",
-          "definition": "label_values(query_stage_outcome_total{namespace=~\"$namespace\",stageType=~\".+\",pipelineId!~\"_lw_tmp_.*\"},stageType)",
+          "definition": "label_values(query_stage_outcome_total{namespace=~\"$namespace\",stageId=~\".+\",pipelineId!~\"_lw_tmp_.*\"},stageId)",
           "hide": 0,
           "includeAll": true,
-          "label": "Stage Type",
+          "label": "Stage Id",
           "multi": true,
-          "name": "stage",
+          "name": "stageId",
           "options": [],
-          "query": "label_values(query_stage_outcome_total{namespace=~\"$namespace\",stageType=~\".+\",pipelineId!~\"_lw_tmp_.*\"},stageType)",
+          "query": "label_values(query_stage_outcome_total{namespace=~\"$namespace\",stageId=~\".+\",pipelineId!~\"_lw_tmp_.*\"},stageId)",
           "refresh": 1,
           "regex": "/(.+)/",
           "skipUrlSync": false,
