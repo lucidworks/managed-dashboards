@@ -2159,6 +2159,33 @@
           "type": "query",
           "useTags": false
         },
+        {
+          "allValue": null,
+          "current": {
+            "text": "All",
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": "Prometheus",
+          "definition": "label_values(query_stage_outcome_total{namespace=~\"$namespace\",stageId=~\".+\",pipelineId!~\"_lw_tmp_.*\"},stageId)",
+          "hide": 0,
+          "includeAll": true,
+          "label": "Stage ID",
+          "multi": true,
+          "name": "stageId",
+          "options": [],
+          "query": "label_values(query_stage_outcome_total{namespace=~\"$namespace\",stageType=~\".+\",pipelineId!~\"_lw_tmp_.*\"},stageType)",
+          "refresh": 1,
+          "regex": "/(.+)/",
+          "skipUrlSync": false,
+          "sort": 1,
+          "tagValuesQuery": "",
+          "tags": [],
+          "tagsQuery": "",
+          "type": "query",
+          "useTags": false
+        },
       {
         "allValue": null,
         "current": {
