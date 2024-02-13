@@ -1697,9 +1697,9 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "histogram_quantile(0.95, sum by(stageType, pipelineId, le) (rate(query_stage_time_secs_bucket{namespace=~\"$namespace\", pod=~\"$pod\", pipelineId=~\"$queryPipelineId\", pipelineId!~\"_lw_tmp_.*\", stageType=~\"$stage\"}[1m])))",
+              "expr": "histogram_quantile(0.95, sum by(stageId, pipelineId, le) (rate(query_stage_time_secs_bucket{namespace=~\"$namespace\", pod=~\"$pod\", pipelineId=~\"$queryPipelineId\", pipelineId!~\"_lw_tmp_.*\", stageId=~\"$stageId\"}[1m])))",
               "intervalFactor": 2,
-              "legendFormat": "{{pipelineId}} {{stageType}}",
+              "legendFormat": "{{pipelineId}} {{stageId}}",
               "refId": "A"
             }
           ],
@@ -1786,9 +1786,9 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "histogram_quantile(0.75, sum by(stageType, pipelineId, le) (rate(query_stage_time_secs_bucket{namespace=~\"$namespace\", pod=~\"$pod\", pipelineId=~\"$queryPipelineId\", pipelineId!~\"_lw_tmp_.*\", stageType=~\"$stage\"}[1m])))",
+              "expr": "histogram_quantile(0.75, sum by(stageId, pipelineId, le) (rate(query_stage_time_secs_bucket{namespace=~\"$namespace\", pod=~\"$pod\", pipelineId=~\"$queryPipelineId\", pipelineId!~\"_lw_tmp_.*\", stageId=~\"$stageId\"}[1m])))",
               "intervalFactor": 2,
-              "legendFormat": "{{pipelineId}} {{stageType}}",
+              "legendFormat": "{{pipelineId}} {{stageId}}",
               "refId": "A"
             }
           ],
@@ -1874,9 +1874,9 @@
           "steppedLine": false,
           "targets": [
             {
-              "expr": "histogram_quantile(0.5, sum by(stageType, pipelineId, le) (rate(query_stage_time_secs_bucket{namespace=~\"$namespace\", pod=~\"$pod\", pipelineId=~\"$queryPipelineId\", pipelineId!~\"_lw_tmp_.*\", stageType=~\"$stage\"}[1m])))",
+              "expr": "histogram_quantile(0.5, sum by(stageId, pipelineId, le) (rate(query_stage_time_secs_bucket{namespace=~\"$namespace\", pod=~\"$pod\", pipelineId=~\"$queryPipelineId\", pipelineId!~\"_lw_tmp_.*\", stageId=~\"$stageId\"}[1m])))",
               "intervalFactor": 2,
-              "legendFormat": "{{pipelineId}} {{stageType}}",
+              "legendFormat": "{{pipelineId}} {{stageId}}",
               "refId": "A"
             }
           ],
