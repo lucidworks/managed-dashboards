@@ -369,7 +369,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum(rate(http_server_requests_seconds_count{namespace=~\"$namespace\",app_kubernetes_io_component=\"fusion-indexing\",uri=~\"/api/v1/index-pipelines/(.*)\",method=\"POST\"}[1m]))",
+          "expr": "sum(rate(http_server_requests_seconds_count{namespace=~\"$namespace\",app_kubernetes_io_component=\"fusion-indexing\"}[1m]))",
           "interval": "",
           "legendFormat": "Indexing Requests Per Second",
           "refId": "A"
@@ -568,7 +568,7 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "sum by(pipelineId)(rate(pipeline_execution_duration_secs_count{namespace=~\"$namespace\",pipelineId=~\"$queryPipelineId\",pipelineId!~\"_lw_tmp_.*\"}[1m]))",
+          "expr": "sum by(pipelineId)(rate(pipeline_execution_duration_secs_count{namespace=~\"$namespace\",pipelineId=~\"$queryPipelineId\",pipelineId!~\"_lw_tmp_.*\",app_kubernetes_io_component=\"query-pipeline\"}[1m]))",
           "interval": "",
           "legendFormat": "{{pipelineId}}",
           "refId": "A"
